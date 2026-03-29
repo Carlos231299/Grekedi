@@ -69,10 +69,25 @@ const LoginView = () => {
           >
             Acceder al Panel
           </button>
+
+          <div className="mt-8 pt-6 border-t border-white/5 flex flex-col items-center space-y-3">
+            <span className="px-3 py-1 bg-white/5 border border-white/10 text-zinc-400 text-[9px] font-black uppercase tracking-[0.2em] rounded-full">
+              Credenciales de Sistema
+            </span>
+            <div className="flex gap-4">
+               <p className="text-zinc-500 text-[10px] uppercase font-label tracking-widest">
+                 User: <span className="text-white font-bold ml-1">admin</span>
+               </p>
+               <span className="text-zinc-700">|</span>
+               <p className="text-zinc-500 text-[10px] uppercase font-label tracking-widest">
+                 Pass: <span className="text-white font-bold ml-1">stitch2026</span>
+               </p>
+            </div>
+          </div>
         </form>
 
         <footer className="mt-12 text-center">
-          <button 
+          <button
             onClick={() => navigate('/')}
             className="text-zinc-500 text-[10px] font-label uppercase tracking-widest hover:text-white transition-colors"
           >
