@@ -115,6 +115,17 @@ createCat.run('Cinturones & Straps', catAccesorios);
 const subcategories = db.prepare('SELECT id, name FROM categories WHERE parent_id IS NOT NULL').all();
 const insertP = db.prepare(`INSERT INTO products (category_id, provider_id, name, slug, price, stock, min_stock, sku, description, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
 
+const CURATED_IMAGES = [
+  'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=800&q=80', // Leggings
+  'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&q=80', // Bra
+  'https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=800&q=80', // Activewear
+  'https://images.unsplash.com/photo-1556817411-31ae72fa3ea8?w=800&q=80', // Ropa
+  'https://images.unsplash.com/photo-1571731956672-f2b94e7dd0cb?w=800&q=80', // Gym
+  'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=800&q=80', // Supps
+  'https://images.unsplash.com/photo-1608228079968-c7681eaef813?w=800&q=80', // Bottles
+  'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80'  // Weights
+];
+
 let productCounter = 1;
 subcategories.forEach(sub => {
   for(let i=1; i<=20; i++) {
@@ -134,7 +145,7 @@ subcategories.forEach(sub => {
       5, 
       `GK-${sub.id}-${i.toString().padStart(4, '0')}`, 
       `Producto premium categoría ${sub.name}. Ideal para potenciar tu entrenamiento diario con máximo confort.`, 
-      `https://picsum.photos/seed/${productCounter}/800/800` // UUID seed for mock pics
+      CURATED_IMAGES[productCounter % CURATED_IMAGES.length]
     );
     productCounter++;
   }

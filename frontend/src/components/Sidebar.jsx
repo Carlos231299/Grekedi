@@ -70,7 +70,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                 return (
                   <div key={cat.id} className="space-y-2">
                     <button 
-                      onClick={() => toggleExpand(cat.id)}
+                      onClick={() => { toggleExpand(cat.id); navigate('/', { state: { category: cat.name } }); onClose(); }}
                       className="w-full flex items-center justify-between text-white group"
                     >
                       <div className="flex items-center gap-3">
@@ -90,6 +90,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                           <Link
                             key={sub.id}
                             to="/"
+                            state={{ category: sub.name }}
                             onClick={onClose}
                             className="text-[10px] font-medium text-zinc-500 hover:text-white transition-colors uppercase tracking-widest flex items-center gap-2"
                           >

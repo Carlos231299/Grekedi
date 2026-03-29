@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import TopAppBar from '../components/TopAppBar';
 import { FaTiktok, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { useSearch } from '../context/SearchContext';
@@ -30,6 +30,16 @@ const HomeView = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const { searchTerm, setSearchTerm } = useSearch();
   const productsRef = useRef(null);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.category) {
+      setActiveCategory(location.state.category);
+      setSearchTerm('');
+      setTimeout(() => productsRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
+    }
+  }, [location.state, setSearchTerm]);
 
   useEffect(() => {
     fetch(`${API}/api/products`)
