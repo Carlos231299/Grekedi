@@ -1,0 +1,45 @@
+# Dependencias
+node_modules/
+
+# Entornos Virtuales y Variables
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Base de datos SQLite
+*.db
+*.sqlite
+*.sqlite3
+backend/grekedi.db
+backend/grekedi.db-shm
+backend/grekedi.db-wal
+grekedi.db
+
+# Compilados de Frontend
+dist/
+dist-ssr/
+build/
+out/
+
+# Caches e IDEs
+.npm
+.eslintcache
+.stylelintcache
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporales SCSS y Mac
+.DS_Store
+*.tsbuildinfo
