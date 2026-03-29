@@ -12,7 +12,7 @@ const COLORS = [
   { name: 'Blanco', hex: '#f4f4f5' },
 ];
 
-const API = 'http://localhost:3002';
+const API = '';
 
 const formatCOP = (amount) =>
   new Intl.NumberFormat('es-CO', {

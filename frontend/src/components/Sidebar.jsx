@@ -10,7 +10,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      fetch('http://localhost:3002/api/categories')
+      fetch('/api/categories')
         .then(res => res.json())
         .then(data => setCategories(data))
         .catch(err => console.error('Error fetching categories:', err));

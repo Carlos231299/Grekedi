@@ -70,7 +70,7 @@ const AdminDashboardView = () => {
 
   const checkHealth = async () => {
     try {
-      const res = await fetch('http://localhost:3002/api/health');
+      const res = await fetch('/api/health');
       setBackendStatus(res.ok ? 'online' : 'offline');
     } catch { setBackendStatus('offline'); }
   };
@@ -84,12 +84,12 @@ const AdminDashboardView = () => {
 
   const fetchData = async () => {
     const [s, p, c, set, o, provs] = await Promise.all([
-      safeFetch('http://localhost:3002/api/stats'),
-      safeFetch('http://localhost:3002/api/products'),
-      safeFetch('http://localhost:3002/api/categories'),
-      safeFetch('http://localhost:3002/api/settings'),
-      safeFetch('http://localhost:3002/api/orders'),
-      safeFetch('http://localhost:3002/api/providers')
+      safeFetch('/api/stats'),
+      safeFetch('/api/products'),
+      safeFetch('/api/categories'),
+      safeFetch('/api/settings'),
+      safeFetch('/api/orders'),
+      safeFetch('/api/providers')
     ]);
     if (s) setStats(s);
     if (p) setProducts(p);
@@ -100,14 +100,14 @@ const AdminDashboardView = () => {
   };
 
   const fetchUser = async () => {
-    const data = await safeFetch('http://localhost:3002/api/user');
+    const data = await safeFetch('/api/user');
     if (data) setUser({ ...data, password: '' });
   };
 
   const handleShowOrder = async (order) => {
     setSelectedOrder(order);
     setShowOrderModal(true);
-    const details = await safeFetch(`http://localhost:3002/api/orders/${order.id}`);
+    const details = await safeFetch(`/api/orders/${order.id}`);
     if (details) setSelectedOrder(details);
   };
 
@@ -119,7 +119,7 @@ const AdminDashboardView = () => {
     const formData = new FormData();
     formData.append('image', file);
     try {
-      const res = await fetch('http://localhost:3002/api/upload', { method: 'POST', body: formData });
+      const res = await fetch('/api/upload', { method: 'POST', body: formData });
       const data = await res.json();
       if (data.url) {
         if (target === 'product') setProductForm({ ...productForm, image_url: data.url });
@@ -132,7 +132,7 @@ const AdminDashboardView = () => {
 
   const submitProduct = async (e) => {
     e.preventDefault();
-    const url = editingItem ? `http://localhost:3002/api/products/${editingItem.id}` : 'http://localhost:3002/api/products';
+    const url = editingItem ? `/api/products/${editingItem.id}` : '/api/products';
     const res = await fetch(url, {
       method: editingItem ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -143,7 +143,7 @@ const AdminDashboardView = () => {
 
   const submitCategory = async (e) => {
     e.preventDefault();
-    const url = editingItem ? `http://localhost:3002/api/categories/${editingItem.id}` : 'http://localhost:3002/api/categories';
+    const url = editingItem ? `/api/categories/${editingItem.id}` : '/api/categories';
     const res = await fetch(url, {
       method: editingItem ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -154,7 +154,7 @@ const AdminDashboardView = () => {
 
   const submitProvider = async (e) => {
     e.preventDefault();
-    const url = editingItem ? `http://localhost:3002/api/providers/${editingItem.id}` : 'http://localhost:3002/api/providers';
+    const url = editingItem ? `/api/providers/${editingItem.id}` : '/api/providers';
     const res = await fetch(url, {
       method: editingItem ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -166,7 +166,7 @@ const AdminDashboardView = () => {
   const deleteItem = (id, type) => {
     Swal.fire({ title: '¿Borrar?', icon: 'warning', showCancelButton: true }).then(async (r) => {
       if (r.isConfirmed) {
-        await fetch(`http://localhost:3002/api/${type}/${id}`, { method: 'DELETE' });
+        await fetch(`/api/${type}/${id}`, { method: 'DELETE' });
         fetchData();
       }
     });
@@ -175,7 +175,7 @@ const AdminDashboardView = () => {
   const handlePublish = async () => {
     setIsSaving(true);
     try {
-      await fetch('http://localhost:3002/api/settings', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(settings) });
+      await fetch('/api/settings', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(settings) });
       Swal.fire('Exito', 'Publicado', 'success').then(() => window.location.reload());
     } catch { Swal.fire('Error', 'Fallo', 'error'); }
     setIsSaving(false);
@@ -183,7 +183,7 @@ const AdminDashboardView = () => {
 
   const updateProfile = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:3002/api/user', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(user) });
+    const res = await fetch('/api/user', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(user) });
     if (res.ok) Swal.fire('Exito', 'Perfil actualizado', 'success');
   };
 
@@ -387,7 +387,7 @@ const AdminDashboardView = () => {
         {activeTab === 'perfil' && (
           <div className="max-w-2xl space-y-10 animate-in fade-in slide-in-from-bottom-2 duration-500">
             <header className="flex justify-between items-center"><h2 className="text-3xl font-headline font-bold uppercase italic">Ajustes de Perfil</h2></header>
-            <form onSubmit={async (e) => { e.preventDefault(); const res = await fetch('http://localhost:3002/api/user', { method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(user) }); if(res.ok) Swal.fire('Exito', 'Datos guardados', 'success'); }} className="bg-white p-12 rounded-4xl border border-zinc-100 flex flex-col md:flex-row gap-10 shadow-sm">
+            <form onSubmit={async (e) => { e.preventDefault(); const res = await fetch('/api/user', { method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(user) }); if(res.ok) Swal.fire('Exito', 'Datos guardados', 'success'); }} className="bg-white p-12 rounded-4xl border border-zinc-100 flex flex-col md:flex-row gap-10 shadow-sm">
                <div className="relative group shrink-0 w-32 h-32 rounded-full overflow-hidden border-4 border-pink-500/10 shadow-lg bg-zinc-100">
                  <img src={user.avatar} className="w-full h-full object-cover" />
                  <label className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center cursor-pointer transition-all text-white"><span className="material-symbols-outlined">photo_camera</span><input type="file" className="hidden" onChange={(e) => handleFileUpload(e, 'user')} /></label>

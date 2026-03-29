@@ -18,7 +18,7 @@ const TopAppBar = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3002/api/products')
+    fetch('/api/products')
       .then(res => res.json())
       .then(data => setAllProducts(data))
       .catch(err => console.error(err));

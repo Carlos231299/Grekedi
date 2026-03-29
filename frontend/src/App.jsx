@@ -15,7 +15,7 @@ function App() {
   const [settings, setSettings] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3002/api/settings')
+    fetch('/api/settings')
       .then(res => res.json())
       .then(data => {
         setSettings(data);

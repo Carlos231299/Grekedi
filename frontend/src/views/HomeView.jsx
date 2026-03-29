@@ -4,7 +4,7 @@ import TopAppBar from '../components/TopAppBar';
 import { FaTiktok, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { useSearch } from '../context/SearchContext';
 
-const API = 'http://localhost:3002';
+const API = '';
 
 // Formateador de precios en Pesos Colombianos
 const formatCOP = (amount) =>
