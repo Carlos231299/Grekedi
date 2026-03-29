@@ -118,12 +118,12 @@ const insertP = db.prepare(`INSERT INTO products (category_id, provider_id, name
 const CURATED_IMAGES = [
   'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=800&q=80', // Leggings
   'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&q=80', // Bra
-  'https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=800&q=80', // Activewear
-  'https://images.unsplash.com/photo-1556817411-31ae72fa3ea8?w=800&q=80', // Ropa
-  'https://images.unsplash.com/photo-1571731956672-f2b94e7dd0cb?w=800&q=80', // Gym
-  'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=800&q=80', // Supps
-  'https://images.unsplash.com/photo-1608228079968-c7681eaef813?w=800&q=80', // Bottles
-  'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80'  // Weights
+  'https://images.unsplash.com/photo-1518611012118-69306914674e?w=800&q=80', // Gym Girl
+  'https://images.unsplash.com/photo-1533681436402-231dc39cd5ce?w=800&q=80', // Dumbbells
+  'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=800&q=80', // Supplements
+  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80', // Activewear
+  'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80', // Sport Shoes
+  'https://images.unsplash.com/photo-1579726241517-74220b33b24f?w=800&q=80'  // Protein Powder
 ];
 
 let productCounter = 1;

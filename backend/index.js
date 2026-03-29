@@ -33,7 +33,7 @@ const upload = multer({ storage, limits: { fileSize: 50 * 1024 * 1024 } });
 
 app.post('/api/upload', upload.single('image'), (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'Ningún archivo proporcionado' });
-  res.json({ url: `http://localhost:${PORT}/uploads/${req.file.filename}` });
+  res.json({ url: `/uploads/${req.file.filename}` });
 });
 
 app.get('/api/health', (req, res) => res.json({ status: 'online' }));
