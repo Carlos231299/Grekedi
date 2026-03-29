@@ -75,13 +75,13 @@ const LoginView = () => {
               Credenciales de Sistema
             </span>
             <div className="flex gap-4">
-               <p className="text-zinc-500 text-[10px] uppercase font-label tracking-widest">
-                 User: <span className="text-white font-bold ml-1">admin</span>
-               </p>
-               <span className="text-zinc-700">|</span>
-               <p className="text-zinc-500 text-[10px] uppercase font-label tracking-widest">
-                 Pass: <span className="text-white font-bold ml-1">stitch2026</span>
-               </p>
+              <p className="text-zinc-500 text-[10px] lowercase font-label tracking-widest">
+                User: <span className="text-white font-bold ml-1">admin</span>
+              </p>
+              <span className="text-zinc-700">|</span>
+              <p className="text-zinc-500 text-[10px] lowercase font-label tracking-widest">
+                Pass: <span className="text-white font-bold ml-1">stitch2026</span>
+              </p>
             </div>
           </div>
         </form>
